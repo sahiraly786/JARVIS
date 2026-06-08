@@ -18,8 +18,8 @@ import webbrowser, datetime, os, sys, requests
 
 # ── Load API keys from .env ──
 
-GEMINI_KEY  = ("AIzaSyAvmjGq9lc-fGijz9vtkshBewkaf-tbRXs")
-GROQ_KEY    = ("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")
+GEMINI_KEY  = ("AQ.Ab8RN6KrD7tv8yZE0iwDry2SZzZ_evQzeQUBbRYkGySqYVItpQ")
+GROQ_KEY    = ("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")
 WEATHER_KEY = ("a707959a53c649caafc111142261904")
 
 # ── AI Clients ──
@@ -42,7 +42,7 @@ def gemini_ask(prompt):
     response = ""
     try:
         for chunk in gemini_client.models.generate_content_stream(
-            model="models/gemini-2.0-flash", contents=prompt
+            model="gemini-3-flash-preview", contents=prompt
         ):
             if chunk.text:
                 response += chunk.text
@@ -65,7 +65,7 @@ def groq_ask(prompt):
     response = ""
     try:
         completion = groq_client.chat.completions.create(
-            model="llama-3.3-70b-versatile",   # stable model
+            model="openai/gpt-oss-120b",   # stable model
             messages=[{"role": "user", "content": prompt}],
             stream=True
         )
