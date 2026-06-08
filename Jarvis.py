@@ -13,7 +13,7 @@ from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
 import requests
 import os
-# import webbrowser, datetime, os, sys, requests
+import webbrowser, datetime, os, sys, requests
 
 
 # ── Load API keys from .env ──
